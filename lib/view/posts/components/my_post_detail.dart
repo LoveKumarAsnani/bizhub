@@ -1,3 +1,4 @@
+import 'package:bizhub_new/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -155,6 +156,7 @@ class _MyPostDetailState extends State<MyPostDetail> {
                         fontWeight: FontWeight.w400,
                       ),
                     ),
+
                     const SizedBox(height: 5),
                     const Divider(),
                     const SizedBox(height: 5),
@@ -174,6 +176,28 @@ class _MyPostDetailState extends State<MyPostDetail> {
                         color: Colors.black54,
                         fontWeight: FontWeight.w400,
                       ),
+                    ),
+                    const SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        const Icon(
+                          Icons.date_range,
+                          size: 20,
+                          color: Colors.black45,
+                        ),
+                        const SizedBox(width: 12),
+                        Text(
+                          Utils().dateFormat2(
+                            widget.myServiceViewModel.serviceModel!.createdAt!,
+                          ),
+                          style: const TextStyle(
+                            fontSize: 14,
+                            color: Colors.black54,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
                     ),
                     const SizedBox(height: 5),
                     const Divider(),

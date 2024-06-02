@@ -73,6 +73,12 @@ class Utils {
     return DateFormat('dd MMM').format(parsedDate).toUpperCase();
   }
 
+  String dateFormat2(String date) {
+    final parsedDate = DateTime.parse(date.toUpperCase());
+
+    return DateFormat('dd MMM yyy').format(parsedDate).toUpperCase();
+  }
+
   // DATE FORMAT
   // String dateFormat(String date) {
   //   final inputDate = DateFormat('dd-MM-yy').parse(date);

@@ -285,10 +285,11 @@ class _SignupScreenState extends State<SignupScreen> {
                       controller: phoneNumberController,
                       hintText: 'Phone',
                       icon: Icons.phone,
+                      textInputType: TextInputType.number,
                       validator: textFieldValidator.phoneNumberErrorGetter,
                       inputFormatters: [
                         FilteringTextInputFormatter.digitsOnly,
-                        LengthLimitingTextInputFormatter(10),
+                        LengthLimitingTextInputFormatter(11),
                       ],
                     ),
                   ),

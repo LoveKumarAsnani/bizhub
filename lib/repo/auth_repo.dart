@@ -112,7 +112,8 @@ class AuthRepository {
       final responseLoaded = jsonDecode(response.body);
 
       if (response.statusCode == 200 || response.statusCode == 201) {
-        setOTPCredientail(responseLoaded['data']);
+        // setOTPCredientail(responseLoaded['data']);
+        await setCrediential(responseLoaded['data']);
 
         return responseLoaded;
       } else {

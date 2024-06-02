@@ -84,8 +84,8 @@ class TextFieldValidators {
       return 'Please Enter Description';
     } else if (value.length > 500) {
       return 'Description length Should be less than 500';
-    } else if (value.length < 10) {
-      return 'Description must at least 10 characters';
+    } else if (value.length < 5) {
+      return 'Description must at least 5 characters';
     }
     return null;
   }
@@ -168,13 +168,40 @@ class TextFieldValidators {
   //   }
   //   return null;
   // }
+
   dynamic phoneNumberErrorGetter(String value) {
     if (value.isEmpty) {
       return 'Please Enter Phone Number';
     }
-    if (value.length != 10) {
-      return 'Mobile Number must be of 10 digit';
+    if (value.length != 11) {
+      return 'Mobile Number must be of 11 digit';
     }
+    return null;
+  }
+
+  // dynamic phoneNumberErrorGetter(String value) {
+  //   // Define a regex pattern for a US phone number starting with "1" (followed by 9 digits)
+  //   final RegExp regex = RegExp(r'^1\d{10}$');
+
+  //   if (value.isEmpty) {
+  //     return 'Please enter a phone number.';
+  //   } else if (!regex.hasMatch(value)) {
+  //     return 'Invalid Phone Number (must start with 1 and have 11 digits).';
+  //   }
+
+  //   return null;
+  // }
+
+  dynamic phoneNumberErrorGetter2(String value) {
+    // Define a regex pattern for a phone number with optional "1" in front and hyphens
+    final RegExp regex = RegExp(r'^(1-)?\d{3}-\d{3}-\d{4}$');
+
+    if (value.isEmpty) {
+      return 'Please enter a phone number.';
+    } else if (!regex.hasMatch(value)) {
+      return 'Invalid Phone Number (should have the format 1-212-456-7890).';
+    }
+
     return null;
   }
 

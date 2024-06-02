@@ -259,8 +259,13 @@ class AuthViewModel extends ChangeNotifier {
           setLoad(false);
           // if (kDebugMode) {
           // clearFields();
-          setSendOTPEmail(otpEmail);
-          Navigator.pushNamed(context, RouteName.otp);
+          // setSendOTPEmail(otpEmail);
+          Provider.of<BottomNavigationViewModel>(context, listen: false)
+              .bottomIndex = 0;
+          Navigator.of(context).pushNamedAndRemoveUntil(
+            RouteName.home,
+            (route) => false,
+          );
           // print('Successfully Login');
           Utils.toastMessage('Register Successfully!');
           // }

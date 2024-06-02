@@ -43,7 +43,7 @@ class ProfileImage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: const Icon(
-                      Icons.person,
+                      Icons.person, 
                       size: 120,
                       color: Colors.black54,
                     ),

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:bizhub_new/model/service_model.dart';
 import '../utils/app_url.dart';
 import '../utils/shared_prefrences.dart';
@@ -175,6 +176,7 @@ class ServiceRepository {
       );
       // print(response.body);
       final loadedData = json.decode(response.body);
+      log("loadedData $loadedData");
       if (response.statusCode == 200 || response.statusCode == 201) {
         // ServiceModel myPosterService =
         //     loadedData['data'].map((e) => ServiceModel.fromJson(e)).toList();

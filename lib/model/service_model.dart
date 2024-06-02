@@ -84,6 +84,7 @@ class ServiceDetalModel {
   String? address;
   double? latitude;
   double? longitude;
+  String? createdAt;
   List<ServiceImagesModel>? imagesList;
   UserModel? user;
 
@@ -97,6 +98,7 @@ class ServiceDetalModel {
     this.address,
     this.latitude,
     this.longitude,
+    this.createdAt,
     this.imagesList,
     this.user,
   });
@@ -112,12 +114,14 @@ class ServiceDetalModel {
         address: json['address'],
         latitude: double.parse(json['latitude'].toString()),
         longitude: double.parse(json['longitude'].toString()),
+        createdAt: json['created_at'],
         imagesList: json['images'] == null
             ? []
             : (json['images'] as List)
                 .map((e) => ServiceImagesModel.fromJson(e))
                 .toList(),
         user: UserModel.fromJson(json['user']),
+
       );
 
   Map<String, dynamic> toJson() => {
@@ -132,6 +136,7 @@ class ServiceDetalModel {
         'longitude': longitude,
         'images': imagesList,
         'user': user,
+        'created_at': createdAt,
       };
 }
 

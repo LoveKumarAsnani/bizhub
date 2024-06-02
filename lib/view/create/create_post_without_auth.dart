@@ -175,11 +175,11 @@ class _CreatePostWithoutAuthState extends State<CreatePostWithoutAuth> {
                       LabelTextField(
                         label: 'Number *',
                         controller: numberController,
-                        validator: textFieldValidator.phoneNumberErrorGetter,
+                        validator: textFieldValidator.phoneNumberErrorGetter2,
                         textInputType: TextInputType.number,
                         inputFormatters: [
-                          FilteringTextInputFormatter.digitsOnly,
-                          LengthLimitingTextInputFormatter(10),
+                          // FilteringTextInputFormatter.digitsOnly,
+                          LengthLimitingTextInputFormatter(14),
                         ],
                       ),
                       const SizedBox(height: 20),

@@ -130,31 +130,6 @@ class _AllServiceDetailState extends State<AllServiceDetail> {
                     ),
                   ),
                 ),
-                Consumer<AllServicesViewModel>(
-                    builder: (context, allServiceViewModel, _) {
-                  return Positioned(
-                    top: Platform.isIOS ? 55 : 40,
-                    right: 20,
-                    child: InkWell(
-                      onTap: () {
-                        DynamicLinkProvider()
-                            .createLink(
-                          allServiceViewModel.serviceDetalModel!.serviceId!,
-                        )
-                            .then(
-                          (value) {
-                            Share.share(value);
-                          },
-                        );
-                      },
-                      child: const Icon(
-                        CupertinoIcons.share,
-                        color: Colors.white,
-                        size: 30,
-                      ),
-                    ),
-                  );
-                }),
               ],
             ),
           ),

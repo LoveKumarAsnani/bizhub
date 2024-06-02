@@ -32,9 +32,10 @@ class MyTheme {
   static final myLightTheme = ThemeData(
     primaryColor: splash,
     scaffoldBackgroundColor: Colors.white,
-    textTheme: TextTheme(
-      subtitle1: TextStyle(color: Colors.white.withOpacity(0.7), inherit: true),
-    ),
+    textTheme: const TextTheme(
+        // subtitle1: TextStyle(color: Colors.white.withOpacity(0.7), inherit: true),
+
+        ),
     brightness: Brightness.light,
     fontFamily: 'Poppins',
     buttonTheme: const ButtonThemeData(

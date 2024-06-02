@@ -1,11 +1,15 @@
 import 'package:bizhub_new/components/custom_loader.dart';
 import 'package:bizhub_new/utils/app_url.dart';
+import 'package:bizhub_new/utils/utils.dart';
 import 'package:bizhub_new/view/account/profile/view_other_profile.dart';
 import 'package:bizhub_new/view/home/components/google_map_screen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 import '../../../language/language_constant.dart';
+import '../../../utils/dynamic_links.dart';
 import '../../../utils/mytheme.dart';
 import '../../../view_model/all_services_view_model.dart';
 import '../../../view_model/bottom_navigation_view_model.dart';
@@ -113,12 +117,42 @@ class AllServiceDetailBody extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      '\$ ${allServiceViewModel.serviceDetalModel!.serviceAmount.toString()}',
-                      style: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w500,
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          '\$ ${allServiceViewModel.serviceDetalModel!.serviceAmount.toString()}',
+                          style: const TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        Consumer<AllServicesViewModel>(
+                            builder: (context, allServiceViewModel, _) {
+                          return Padding(
+                            padding: const EdgeInsets.only(right: 6),
+                            child: InkWell(
+                              onTap: () {
+                                DynamicLinkProvider()
+                                    .createLink(
+                                  allServiceViewModel
+                                      .serviceDetalModel!.serviceId!,
+                                )
+                                    .then(
+                                  (value) {
+                                    Share.share(value);
+                                  },
+                                );
+                              },
+                              child: const Icon(
+                                CupertinoIcons.share,
+                                color: Colors.black87,
+                                size: 30,
+                              ),
+                            ),
+                          );
+                        }),
+                      ],
                     ),
                     const SizedBox(height: 6),
                     Text(
@@ -149,6 +183,28 @@ class AllServiceDetailBody extends StatelessWidget {
                         color: Colors.black54,
                         fontWeight: FontWeight.w400,
                       ),
+                    ),
+                    const SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        const Icon(
+                          Icons.date_range,
+                          size: 20,
+                          color: Colors.black45,
+                        ),
+                        const SizedBox(width: 12),
+                        Text(
+                          Utils().dateFormat2(
+                            allServiceViewModel.serviceDetalModel!.createdAt!,
+                          ),
+                          style: const TextStyle(
+                            fontSize: 14,
+                            color: Colors.black54,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
                     ),
                     const SizedBox(height: 5),
                     const Divider(),
@@ -273,7 +329,7 @@ class AllServiceDetailBody extends StatelessWidget {
                                             .firstName !=
                                         'User')
                                   Text(
-                                    translation(context).viewYourProfile,
+                                    translation(context).viewProfile,
                                     style: const TextStyle(
                                       color: MyTheme.greenColor,
                                       fontWeight: FontWeight.w500,

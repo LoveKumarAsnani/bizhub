@@ -11,6 +11,7 @@ class InputTextFormField extends StatelessWidget {
     required this.icon,
     required this.validator,
     this.inputFormatters,
+    this.textInputType = TextInputType.multiline,
   }) : super(key: key);
 
   final String hintText;
@@ -18,6 +19,7 @@ class InputTextFormField extends StatelessWidget {
   final IconData icon;
   final Function validator;
   final List<TextInputFormatter>? inputFormatters;
+  final TextInputType? textInputType;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +31,7 @@ class InputTextFormField extends StatelessWidget {
         cursorColor: MyTheme.greenColor,
         validator: (value) => validator(value),
         inputFormatters: inputFormatters,
+        keyboardType: textInputType,
         decoration: InputDecoration(
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(2),
@@ -203,6 +206,7 @@ class LabelTextField extends StatelessWidget {
                   //   ),
                   // ),
                   prefixText: ' ',
+                  errorMaxLines: 2,
                 ),
               )
             : TextFormField(
