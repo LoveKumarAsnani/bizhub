@@ -173,9 +173,10 @@ class _CreatePostWithoutAuthState extends State<CreatePostWithoutAuth> {
                       ),
                       const SizedBox(height: 20),
                       LabelTextField(
-                        label: 'Number *',
+                        label: 'Number (Optional)',
                         controller: numberController,
-                        validator: textFieldValidator.phoneNumberErrorGetter2,
+                        validator:
+                            textFieldValidator.phoneNumberErrorGetter2Optional,
                         textInputType: TextInputType.number,
                         inputFormatters: [
                           // FilteringTextInputFormatter.digitsOnly,
@@ -184,9 +185,9 @@ class _CreatePostWithoutAuthState extends State<CreatePostWithoutAuth> {
                       ),
                       const SizedBox(height: 20),
                       LabelTextField(
-                        label: 'Email *',
+                        label: 'Email (Optional)',
                         controller: emailController,
-                        validator: textFieldValidator.emailErrorGetter,
+                        validator: textFieldValidator.emailErrorGetterOptional,
                       ),
                       const SizedBox(height: 20),
                       const LocationPicker(),

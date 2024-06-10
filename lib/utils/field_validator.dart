@@ -194,14 +194,30 @@ class TextFieldValidators {
 
   dynamic phoneNumberErrorGetter2(String value) {
     // Define a regex pattern for a phone number with optional "1" in front and hyphens
-    final RegExp regex = RegExp(r'^(1-)?\d{3}-\d{3}-\d{4}$');
+    // final RegExp regex = RegExp(r'^(1-)?\d{3}-\d{3}-\d{4}$');
 
     if (value.isEmpty) {
       return 'Please enter a phone number.';
-    } else if (!regex.hasMatch(value)) {
-      return 'Invalid Phone Number (should have the format 1-212-456-7890).';
     }
+    //else if (!regex.hasMatch(value)) {
+    else if (value.length < 10) {
+      // return 'Invalid Phone Number (should have the format 1-212-456-7890).';
+      return 'Invalid Phone Number (Length should be greater than 10 digits ).';
+    } else if (value.length > 15) {
+      return 'Invalid Phone Number (Length should be less than 15 digits ).';
+    }
+    return null;
+  }
 
+  dynamic phoneNumberErrorGetter2Optional(String value) {
+    if (value.isNotEmpty) {
+      if (value.length < 10) {
+        // return 'Invalid Phone Number (should have the format 1-212-456-7890).';
+        return 'Invalid Phone Number (Length should be greater than 10 digits ).';
+      } else if (value.length > 15) {
+        return 'Invalid Phone Number (Length should be less than 15 digits ).';
+      }
+    }
     return null;
   }
 
