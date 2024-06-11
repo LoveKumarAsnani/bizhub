@@ -177,7 +177,7 @@ class _CreatePostWithoutAuthState extends State<CreatePostWithoutAuth> {
                         controller: numberController,
                         validator:
                             textFieldValidator.phoneNumberErrorGetter2Optional,
-                        textInputType: TextInputType.number,
+                        textInputType: TextInputType.phone,
                         inputFormatters: [
                           // FilteringTextInputFormatter.digitsOnly,
                           LengthLimitingTextInputFormatter(14),

@@ -129,7 +129,8 @@ class ServiceRepository {
       } else {
         servicePage = 'page=$page';
       }
-
+      print(
+          '${AppUrl.withoutAuthAllServiceEndPoint}?$servicePage&type=$serviceType$catIds&latitude=$lat&longitude=$long$miles');
       final response = await http.get(
         Uri.parse(
             '${AppUrl.withoutAuthAllServiceEndPoint}?$servicePage&type=$serviceType$catIds&latitude=$lat&longitude=$long$miles'),
@@ -141,6 +142,7 @@ class ServiceRepository {
       // print('${AppUrl.allServiceEndPoint}?type=$serviceType');
 
       final loadedData = json.decode(response.body);
+      print("===================================");
       print(loadedData);
       if (response.statusCode == 200) {
         List<ServiceModel> allServicesList = (loadedData['data'] as List).map(
@@ -407,6 +409,8 @@ class ServiceRepository {
         Utils.toastMessage(responseLoaded['message']);
       }
     } catch (e) {
+      // dr murli wali raam walab jo naathi
+      // dr khatau
       // print(e.toString());
       // Utils.toastMessage(e.toString());
       // Fluttertoast.showToast(msg: e.toString());

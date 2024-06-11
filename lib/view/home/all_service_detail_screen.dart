@@ -144,8 +144,10 @@ class _AllServiceDetailState extends State<AllServiceDetail> {
             if (allServiceViewModel.loading) {
               return const SizedBox();
             }
-            if (allServiceViewModel.serviceDetalModel!.user!.firstName ==
-                'Guest') {
+
+            if (allServiceViewModel.serviceDetalModel == null ||
+                allServiceViewModel.serviceDetalModel!.user!.firstName ==
+                    'Guest') {
               return const SizedBox();
             }
             return Positioned(
